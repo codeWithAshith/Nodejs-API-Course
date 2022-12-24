@@ -1,16 +1,12 @@
-// install express - npm install --save express
-// To create server using js.
-
-// install nodemon - nodemon - npm install --save nodemon
-// To detect changes and re-run the project
-
-// import ... from "..." -> this is not supported in Nodejs
-
 const express = require("express");
 const app = express();
 
+const productRoutes = require("./routes/products"); 
+const orderRoutes = require("./routes/orders");
+
+app.use("/products", productRoutes);
+app.use("/orders", orderRoutes);
+
 app.listen(3000);
 
-app.get("/", (req, res) => {
-  res.send("<p>Home Page</p>");
-});
+app.get("/products", productRoutes);
