@@ -6,7 +6,9 @@ const Product = require("../models/product");
 
 router.get("/", (req, res, next) => {
   Product.find()
-    .select("name price _id") // to select specific fields
+    .select("name price _id")
+    // .populate('product')
+    .populate("product", "name") // to populate product details --> product is the project
     .exec()
     .then((docs) => {
       const response = {
@@ -69,6 +71,7 @@ router.get("/:productId", (req, res, next) => {
   const id = req.params.productId;
   Product.findById(id)
     .select("name price _id")
+    .populate("product")
     .exec()
     .then((doc) => {
       console.log("From database", doc);
