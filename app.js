@@ -4,9 +4,9 @@ const bodyParser = require("body-parser");
 const morgan = require("morgan");
 const mongoose = require("mongoose");
 
-const productRoutes = require("./routes/products");
-const orderRoutes = require("./routes/orders");
-const userRoutes = require('./routes/users');
+const productRoutes = require("./api/routes/products");
+const orderRoutes = require("./api/routes/orders");
+const userRoutes = require('./api/routes/users');
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
