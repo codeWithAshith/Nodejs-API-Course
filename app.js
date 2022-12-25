@@ -4,11 +4,12 @@ const bodyParser = require("body-parser");
 const morgan = require("morgan");
 const mongoose = require("mongoose");
 
-//  for handling multipart/form-data - uploading files
-// npm i multer 
+// for encrypting password
+// npm i bcrypt 
 
 const productRoutes = require("./routes/products");
 const orderRoutes = require("./routes/orders");
+const userRoutes = require('./routes/users');
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
@@ -25,11 +26,11 @@ mongoose
   .catch((err) => console.log(err.reason));
 
 app.use(morgan("dev"));
-// to make the uploads folder public
 app.use('/uploads', express.static('uploads'));
 
 app.use("/products", productRoutes);
 app.use("/orders", orderRoutes);
+app.use("/users", userRoutes);
 
 app.use((req, res, next) => {
   res.header("Access-Control-Allow-Origin", "*");

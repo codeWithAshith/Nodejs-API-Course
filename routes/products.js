@@ -3,7 +3,6 @@ const router = express.Router();
 const mongoose = require("mongoose");
 const multer = require("multer");
 
-// to configure where to store the uploaded files
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
     cb(null, "./uploads/");
@@ -13,7 +12,6 @@ const storage = multer.diskStorage({
   },
 });
 
-// to configure which type of files should be accessible
 const fileFilter = (req, file, cb) => {
   if (file.mimetype === "image/jpeg" || file.mimetype === "image/png") {
     cb(null, true);
@@ -22,7 +20,6 @@ const fileFilter = (req, file, cb) => {
   }
 };
 
-// to setup storage location, file limit and file type filter
 const upload = multer({
   storage: storage,
   limits: {
