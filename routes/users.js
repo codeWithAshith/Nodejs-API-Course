@@ -2,14 +2,11 @@ const express = require("express");
 const router = express.Router();
 const mongoose = require("mongoose");
 const bcrypt = require("bcrypt");
-
-// npm i jsonwebtoken
 const jwt = require("jsonwebtoken");
 
 const User = require("../models/user");
 
 router.post("/signup", (req, res, next) => {
-  // find return array
   User.find({ email: req.body.email })
     .exec()
     .then((user) => {
@@ -70,7 +67,6 @@ router.post("/login", (req, res, next) => {
               email: user[0].email,
               userId: user[0]._id,
             },
-            // json secret
             "secret",
             {
               expiresIn: "1h",
