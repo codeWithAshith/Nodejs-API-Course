@@ -2,9 +2,10 @@ const express = require("express");
 const app = express();
 const bodyParser = require("body-parser");
 const morgan = require("morgan");
-
-// install mongoose - npm i mongoose
 const mongoose = require("mongoose");
+
+//  for handling multipart/form-data - uploading files
+// npm i multer 
 
 const productRoutes = require("./routes/products");
 const orderRoutes = require("./routes/orders");
@@ -24,6 +25,8 @@ mongoose
   .catch((err) => console.log(err.reason));
 
 app.use(morgan("dev"));
+// to make the uploads folder public
+app.use('/uploads', express.static('uploads'));
 
 app.use("/products", productRoutes);
 app.use("/orders", orderRoutes);

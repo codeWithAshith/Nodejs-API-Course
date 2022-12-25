@@ -86,8 +86,24 @@
 						"method": "POST",
 						"header": [],
 						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"name\":\"asada\",\n    \"price\":100\n}",
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "product",
+									"type": "default"
+								},
+								{
+									"key": "price",
+									"value": "100",
+									"type": "default"
+								},
+								{
+									"key": "productImage",
+									"type": "file",
+									"src": "/Users/ashithvl/Downloads/backup/9780007548279.jpg"
+								}
+							],
 							"options": {
 								"raw": {
 									"language": "json"
