@@ -4,9 +4,6 @@ const bodyParser = require("body-parser");
 const morgan = require("morgan");
 const mongoose = require("mongoose");
 
-// for encrypting password
-// npm i bcrypt 
-
 const productRoutes = require("./routes/products");
 const orderRoutes = require("./routes/orders");
 const userRoutes = require('./routes/users');
